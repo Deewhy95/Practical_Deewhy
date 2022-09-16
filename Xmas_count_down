@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo -n "Enter event date (e.g., June 6): "
+read dt
+EVENT=`date -d "$dt" +%j`
+TODAY=`date +%j`
+DAYS=`expr $EVENT - $TODAY`
+
+case $DAYS in
+  0) echo "It's today!";;
+  [0-9]*) echo "$DAYS days remaining";;
+  -[0-9]*) echo "Oops, you missed it";;
+esac
